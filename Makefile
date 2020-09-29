@@ -6,7 +6,7 @@ RELEASE_BIN = release.bin
 DEBUG_BIN = debug.bin
 RUSTFLAGS = -C link-arg=$(LINKER_SCRIPT)
 
-.PHONY: all debug clean clippy
+.PHONY: all debug clean clippy run readelf
 
 all: $(RELEASE_BIN)
 
@@ -21,7 +21,7 @@ clippy:
 	RUSTFLAGS="$(RUSTFLAGS)" cargo clippy
 
 run: $(RELEASE_BIN)
-	qemu-system-aarch64 -M raspi3 -kernel $(RELEASE_BIN)
+	qemu-system-aarch64 -M raspi3 -kernel $(RELEASE_BIN) -nographic
 
 readelf: $(RELEASE_ELF)
 	readelf -a $(RELEASE_ELF)
