@@ -6,16 +6,14 @@ SECTIONS {
         *(.text._wumbo)
         *(.text*)
     }
-    . = ALIGN(0x1000);
     .rodata : { *(.rodata*) }
-    . = ALIGN(0x1000);
     .data : { *(.data*) }
-    . = ALIGN(0x1000);
     .bss : 
     {
+        . = ALIGN(8);
         __bss_start = .;
         *(.bss*);
-        . = ALIGN(0x1000);
+        . = ALIGN(8);
         __bss_end = .;
     }
 }
