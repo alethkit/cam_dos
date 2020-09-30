@@ -5,6 +5,7 @@
 use core::panic::PanicInfo;
 
 mod gpio;
+mod uart;
 
 extern "C" {
     static __bss_start: usize;
