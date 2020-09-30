@@ -4,7 +4,9 @@
 
 use core::panic::PanicInfo;
 
-extern {
+mod gpio;
+
+extern "C" {
     static __bss_start: usize;
     static __bss_end: usize;
 }

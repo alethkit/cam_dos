@@ -3,3 +3,12 @@
 [[package]]
 name = "cam_dos"
 version = "0.1.0"
+dependencies = [
+ "tock-registers",
+]
+
+[[package]]
+name = "tock-registers"
+version = "0.5.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "70323afdb8082186c0986da0e10f6e4ed103d681c921c00597e98d9806dac20f"
