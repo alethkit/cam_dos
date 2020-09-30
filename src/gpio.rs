@@ -20,7 +20,6 @@ register_structs! {
 register_bitfields! [u32,
 
     FunctionSelect [
-
         FSEL0 OFFSET(0) NUMBITS(3) [
             Input = 0b000,
             Output = 0b001,
@@ -31,7 +30,6 @@ register_bitfields! [u32,
             Alt4 = 0b011,
             Alt5 = 0b010
         ],
-
         FSEL1 OFFSET(3) NUMBITS(3) [
             Input = 0b000,
             Output = 0b001,
@@ -42,7 +40,6 @@ register_bitfields! [u32,
             Alt4 = 0b011,
             Alt5 = 0b010
         ],
-
         FSEL2 OFFSET(6) NUMBITS(3) [
             Input = 0b000,
             Output = 0b001,
@@ -53,7 +50,6 @@ register_bitfields! [u32,
             Alt4 = 0b011,
             Alt5 = 0b010
         ],
-
         FSEL3 OFFSET(9) NUMBITS(3) [
             Input = 0b000,
             Output = 0b001,
@@ -64,7 +60,6 @@ register_bitfields! [u32,
             Alt4 = 0b011,
             Alt5 = 0b010
         ],
-
         FSEL4 OFFSET(12) NUMBITS(3) [
             Input = 0b000,
             Output = 0b001,
@@ -75,7 +70,6 @@ register_bitfields! [u32,
             Alt4 = 0b011,
             Alt5 = 0b010
         ],
-
         FSEL5 OFFSET(15) NUMBITS(3) [
             Input = 0b000,
             Output = 0b001,
@@ -86,7 +80,6 @@ register_bitfields! [u32,
             Alt4 = 0b011,
             Alt5 = 0b010
         ],
-
         FSEL6 OFFSET(18) NUMBITS(3) [
             Input = 0b000,
             Output = 0b001,
@@ -97,7 +90,6 @@ register_bitfields! [u32,
             Alt4 = 0b011,
             Alt5 = 0b010
         ],
-
         FSEL7 OFFSET(21) NUMBITS(3) [
             Input = 0b000,
             Output = 0b001,
@@ -108,7 +100,6 @@ register_bitfields! [u32,
             Alt4 = 0b011,
             Alt5 = 0b010
         ],
-
         FSEL8 OFFSET(24) NUMBITS(3) [
             Input = 0b000,
             Output = 0b001,
@@ -119,7 +110,6 @@ register_bitfields! [u32,
             Alt4 = 0b011,
             Alt5 = 0b010
         ],
-
         FSEL9 OFFSET(27) NUMBITS(3) [
             Input = 0b000,
             Output = 0b001,
@@ -139,6 +129,7 @@ register_bitfields! [u32,
             PullUp = 0b10
         ]
     ],
+
     GPIOPullClock [
         PUDCLK14 14,
         PUDCLK15 15

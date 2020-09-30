@@ -21,85 +21,84 @@ register_structs! {
     }
 }
 
-register_bitfields! [
-u8,
+register_bitfields! [u8,
 
-AuxiliaryInterrupt [
-    MiniUARTInterruptPending 0,
-    SPI1InterruptPending 1,
-    SPI2InterruptPending 2
-],
-
-AuxiliaryEnable [
-    MiniUARTEnable 0,
-    SPI1Enable 1,
-    SPI2Enable 2
-],
-
-EnableInterrupt [
-    EnableReceiveInterrupt 0,
-    EnableTransmitInterrupt 1
-],
-
-InterruptStatus [
-    InterruptPending OFFSET(0) NUMBITS(1) [],
-    InterruptID OFFSET(1) NUMBITS(2) [
-        NoInterrupts = 0b00,
-        EmptyTransmitHoldingRegister = 0b01,
-        ReceiverHoldsValidByte = 0b10
+    AuxiliaryInterrupt [
+        MiniUARTInterruptPending 0,
+        SPI1InterruptPending 1,
+        SPI2InterruptPending 2
     ],
-    FIFOEnabled OFFSET(6) NUMBITS(2) []
-],
 
-FIFOClear [
-    FIFOClear OFFSET(1) NUMBITS(2) [
-        ClearReceiveFIFO = 0b01,
-        ClearTransmitFIFO = 0b10,
-        ClearBothFIFO = 0b11
+    AuxiliaryEnable [
+        MiniUARTEnable 0,
+        SPI1Enable 1,
+        SPI2Enable 2
+    ],
+
+    EnableInterrupt [
+        EnableReceiveInterrupt 0,
+        EnableTransmitInterrupt 1
+    ],
+
+    InterruptStatus [
+        InterruptPending OFFSET(0) NUMBITS(1) [],
+        InterruptID OFFSET(1) NUMBITS(2) [
+            NoInterrupts = 0b00,
+            EmptyTransmitHoldingRegister = 0b01,
+            ReceiverHoldsValidByte = 0b10
+        ],
+        FIFOEnabled OFFSET(6) NUMBITS(2) []
+    ],
+
+    FIFOClear [
+        FIFOClear OFFSET(1) NUMBITS(2) [
+            ClearReceiveFIFO = 0b01,
+            ClearTransmitFIFO = 0b10,
+            ClearBothFIFO = 0b11
+        ]
+    ],
+
+    LineControl [
+        DataSize OFFSET(0) NUMBITS(2) [
+            SevenBitMode = 0b00,
+            EightBitMode = 0b11
+        ],
+        Break OFFSET(6) NUMBITS(1) [],
+        DLABAccess OFFSET(7) NUMBITS(1) []
+    ],
+
+    ModemControl [
+        RTS 1
+    ],
+
+    LineStatus [
+        DataReady 0,
+        ReceiverOverrun 1,
+        EmptyTransmitter 5,
+        IdleTransmitter 6
+    ],
+
+    ModemStatus [
+        CTSStatus 5
+    ],
+
+    ExtraControl [
+        EnableReceiver OFFSET(0) NUMBITS(1) [],
+        EnableTransmitter OFFSET(1) NUMBITS(1) [],
+        EnableReceiverAutoFlowControl OFFSET(2) NUMBITS(1) [],
+        EnableTransmitterAutoFlowControl OFFSET(3) NUMBITS(1) [],
+        RTSAutoFlowLevel OFFSET(4) NUMBITS(2) [
+            ThreeEmptySpaces = 0b00,
+            TwoEmptySpaces = 0b01,
+            OneEmptySpace = 0b10,
+            FourEmptySpaces = 0b11
+        ],
+        RTSAssertLevel OFFSET(6) NUMBITS(1) [],
+        CTSAssertLevel OFFSET(7) NUMBITS(1) []
     ]
-],
-
-LineControl [
-    DataSize OFFSET(0) NUMBITS(2) [
-        SevenBitMode = 0b00,
-        EightBitMode = 0b11
-    ],
-    Break OFFSET(6) NUMBITS(1) [],
-    DLABAccess OFFSET(7) NUMBITS(1) []
-],
-
-ModemControl [
-    RTS 1
-],
-
-LineStatus [
-    DataReady 0,
-    ReceiverOverrun 1,
-    EmptyTransmitter 5,
-    IdleTransmitter 6
-],
-
-ModemStatus [
-    CTSStatus 5
-],
-
-ExtraControl [
-    EnableReceiver OFFSET(0) NUMBITS(1) [],
-    EnableTransmitter OFFSET(1) NUMBITS(1) [],
-    EnableReceiverAutoFlowControl OFFSET(2) NUMBITS(1) [],
-    EnableTransmitterAutoFlowControl OFFSET(3) NUMBITS(1) [],
-    RTSAutoFlowLevel OFFSET(4) NUMBITS(2) [
-        ThreeEmptySpaces = 0b00,
-        TwoEmptySpaces = 0b01,
-        OneEmptySpace = 0b10,
-        FourEmptySpaces = 0b11
-    ],
-    RTSAssertLevel OFFSET(6) NUMBITS(1) [],
-    CTSAssertLevel OFFSET(7) NUMBITS(1) []
-]
 ];
 
-register_bitfields! [ u32,
+register_bitfields! [u32,
     ExtraStatus [
         SymbolAvailable OFFSET(0) NUMBITS(1) [],
         SpaceAvailable OFFSET(1) NUMBITS(1) [],
