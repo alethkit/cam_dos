@@ -2,8 +2,8 @@ use tock_registers::registers::{ReadOnly, ReadWrite, WriteOnly};
 use tock_registers::{register_bitfields, register_structs};
 
 register_structs! {
-    GPIO {
-        (0x00 => gpfsel: [ReadWrite<u32, FunctionSelect::Register>;6]),
+    pub GPIO {
+        (0x00 => pub gpfsel: [ReadWrite<u32, FunctionSelect::Register>;6]),
         (0x18 => _reserved),
         (0x1C => gpset: WriteOnly<u64>),
         (0x24 => _reserved2),
@@ -11,15 +11,15 @@ register_structs! {
         (0x30 => _reserved3),
         (0x34 => gplev: ReadOnly<u64>),
         (0x3C => _reserved4),
-        (0x94 => gppud: ReadWrite<u32, GPIOPull::Register>),
-        (0x98 => gppudclk: ReadWrite<u64, GPIOPullClock::Register>),
+        (0x94 => pub gppud: ReadWrite<u32, GPIOPull::Register>),
+        (0x98 => pub gppudclk: ReadWrite<u64, GPIOPullClock::Register>),
         (0xA0 => @END),
     }
 }
 
 register_bitfields! [u32,
 
-    FunctionSelect [
+    pub FunctionSelect [
         FSEL0 OFFSET(0) NUMBITS(3) [
             Input = 0b000,
             Output = 0b001,
@@ -122,15 +122,18 @@ register_bitfields! [u32,
         ]
     ],
 
-    GPIOPull [
-        PUD OFFSET(0) NUMBITS(2) [
+    pub GPIOPull [
+         PUD OFFSET(0) NUMBITS(2) [
             Off = 0b00,
             PullDown = 0b01,
             PullUp = 0b10
         ]
-    ],
+    ]
+];
 
-    GPIOPullClock [
+register_bitfields![u64,
+
+    pub GPIOPullClock [
         PUDCLK14 14,
         PUDCLK15 15
     ]

@@ -2,20 +2,20 @@ use tock_registers::registers::{Aliased, ReadOnly, ReadWrite};
 use tock_registers::{register_bitfields, register_structs};
 
 register_structs! {
-    AuxiliaryUart {
+    pub AuxiliaryUart {
         (0x00 => aux_irq: ReadOnly<u8, AuxiliaryInterrupt::Register>),
-        (0x04 => aux_enables: ReadWrite<u8, AuxiliaryEnable::Register>),
-        (0x40 => aux_mu_io_reg: ReadWrite<u8>),
-        (0x44 => aux_mu_ier_reg: ReadWrite<u8, EnableInterrupt::Register>),
+        (0x04 => pub aux_enables: ReadWrite<u8, AuxiliaryEnable::Register>),
+        (0x40 => pub aux_mu_io_reg: ReadWrite<u8>),
+        (0x44 => pub aux_mu_ier_reg: ReadWrite<u8, EnableInterrupt::Register>),
         (0x48 => aux_mu_iir_reg: Aliased<u8, InterruptStatus::Register, FIFOClear::Register>),
-        (0x4C => aux_mu_lcr_reg: ReadWrite<u8, LineControl::Register>),
-        (0x50 => aux_mu_mcr_reg: ReadWrite<u8, ModemControl::Register>),
-        (0x54 => aux_mu_lsr_reg: ReadOnly<u8, LineStatus::Register>),
+        (0x4C => pub aux_mu_lcr_reg: ReadWrite<u8, LineControl::Register>),
+        (0x50 => pub aux_mu_mcr_reg: ReadWrite<u8, ModemControl::Register>),
+        (0x54 => pub aux_mu_lsr_reg: ReadOnly<u8, LineStatus::Register>),
         (0x58 => aux_mu_msr_reg: ReadOnly<u8, ModemStatus::Register>),
         (0x5C => aux_mu_scratch: ReadWrite<u8>),
-        (0x60 => aux_mu_cntl_reg: ReadWrite<u8, ExtraControl::Register>),
+        (0x60 => pub aux_mu_cntl_reg: ReadWrite<u8, ExtraControl::Register>),
         (0x64 => aux_mu_stat_reg: ReadOnly<u32, ExtraStatus::Register>),
-        (0x68 => aux_mu_baud_reg: ReadWrite<u16>),
+        (0x68 => pub aux_mu_baud_reg: ReadWrite<u16>),
 
         (0xC0 => @END),
     }
@@ -23,19 +23,19 @@ register_structs! {
 
 register_bitfields! [u8,
 
-    AuxiliaryInterrupt [
+    pub AuxiliaryInterrupt [
         MiniUARTInterruptPending 0,
         SPI1InterruptPending 1,
         SPI2InterruptPending 2
     ],
 
-    AuxiliaryEnable [
+    pub AuxiliaryEnable [
         MiniUARTEnable 0,
         SPI1Enable 1,
         SPI2Enable 2
     ],
 
-    EnableInterrupt [
+    pub EnableInterrupt [
         EnableReceiveInterrupt 0,
         EnableTransmitInterrupt 1
     ],
@@ -58,7 +58,7 @@ register_bitfields! [u8,
         ]
     ],
 
-    LineControl [
+    pub LineControl [
         DataSize OFFSET(0) NUMBITS(2) [
             SevenBitMode = 0b00,
             EightBitMode = 0b11
@@ -67,11 +67,11 @@ register_bitfields! [u8,
         DLABAccess OFFSET(7) NUMBITS(1) []
     ],
 
-    ModemControl [
+    pub ModemControl [
         RTS 1
     ],
 
-    LineStatus [
+    pub LineStatus [
         DataReady 0,
         ReceiverOverrun 1,
         EmptyTransmitter 5,
@@ -82,7 +82,7 @@ register_bitfields! [u8,
         CTSStatus 5
     ],
 
-    ExtraControl [
+    pub ExtraControl [
         EnableReceiver OFFSET(0) NUMBITS(1) [],
         EnableTransmitter OFFSET(1) NUMBITS(1) [],
         EnableReceiverAutoFlowControl OFFSET(2) NUMBITS(1) [],

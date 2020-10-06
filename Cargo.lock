@@ -10,4 +10,4 @@ dependencies = [
 [[package]]
 name = "tock-registers"
 version = "0.5.0"
-source = "git+https://github.com/tock/tock/#e9c5508d2debd1d63eff1d0cad94248dab85df8f"
+source = "git+https://github.com/tock/tock/#cd9affd382b1346da6faa2c538821112fb759254"
